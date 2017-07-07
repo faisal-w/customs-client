@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Bank')"></head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: admin-sidebar('bank-index')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('BANK')"></div>
+			<!-- content here -->
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Nama Bank</th>
+										<th>No.Rekening</th>
+										<th>Alamat</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="bank,iterStat : ${dataBank}">
+										<td th:text="${iterStat.count}"></td>
+										<td th:text="${bank.nama}"></td>
+										<td th:text="${bank.nomorRekening}"></td>
+										<td th:text="${bank.alamat}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

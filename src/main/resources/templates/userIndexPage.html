@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('User')"></head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: admin-sidebar('user-index')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('USER')"></div>
+			<!-- content here -->
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Perusahaan</th>
+										<th>Username</th>
+										<th>Nama Lengkap</th>
+									</tr>
+								</thead>
+                                <tbody>
+                                    <tr th:each="user,iterStat : ${dataUser}">
+                                        <td th:text="${iterStat.count}"></td>
+                                        <td th:text="${user.client} ? ${user.client.namaPerusahaan}"></td>
+                                        <td th:text="${user.username}"></td>
+                                        <td th:text="${user.nama}"></td>
+                                    </tr>
+                                </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

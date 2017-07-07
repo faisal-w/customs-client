@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Dashboard')">
+</head>
+<body>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar('')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('DASHBOARD')"></div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<h4>Dokumen dalam proses</h4>
+								<div class="break-5"><h1>1</h1></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<h4>Dokumen disetujui</h4>
+								<div class="break-5"><h1>1</h1></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-4">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<h4>Dokumen ditolak</h4>
+								<div class="break-5"><h1>0</h1></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-8 col-md-9">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<div class="col-lg-8">
+									<h2>
+										<span>Deposit: </span>
+										<span th:text="${deposit}">0</span>
+									</h2>
+								</div>
+								<div class="col-lg-4">
+									<a th:href="@{/add-deposit}" type="submit" class="btn btn-success btn-block">
+										<i class="fa fa-fw fa-plus"></i> Tambah Deposit
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-3">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<a th:href="@{/form-cnpibk}" class="btn btn-primary btn-block">
+									<i class="fa fa-fw fa-file"></i> Form CNPIBK
+								</a>
+								<a th:href="@{/upload-excel}" class="btn btn-primary btn-block">
+									<i class="fa fa-fw fa-upload"></i> Upload Excel
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-heading">
+								<i class="fa fa-fw fa-spinner"></i> Response
+							</div>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+										<tr>
+											<th>NO.</th>
+											<th>TGL.HOUSE BLAWB</th>
+											<th>NO.BARANG</th>
+											<th>STATUS</th>
+											<th>KETERANGAN</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr th:each="respon,iterStat : ${dataRespons}">
+											<td th:text="${iterStat.count}">1</td>
+											<td th:text="${respon.cnPibkTerkait} ? ${respon.cnPibkTerkait.tglHouseBlawb}"></td>
+											<td th:text="${respon.cnPibkTerkait} ? ${respon.cnPibkTerkait.noBarang}"></td>
+											<td th:text="${respon.kodeRespon}"></td>
+											<td th:text="${respon.keterangan}"></td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Test Add Client and User</title>
+</head>
+<body>
+    <h1>ADD PERUSAHAAN dan USER PERUSAHAAN</h1>
+    <p>
+        <form th:action="@{/add_client}" class="form-horizontal" method="post" th:object="${perusahaanAndUserDto}" action="">
+            <label>Nama Perusahaan</label>
+            <input type="text"  th:field="*{namaPerusahaan}"/>
+            <br/>
+            <label>NPWP</label>
+            <input type="text" th:field="*{npwp}"/>
+            <br/>
+            <label>Alamat lengkap</label>
+            <input type="text" th:field="*{alamat}"/>
+            <br/>
+            <label>User Portal Bea Cukai</label>
+            <input type="text" th:field="*{userWSBeaCukai}"/>
+            <br/>
+            <label>Password Portal Bea Cukai</label>
+            <input type="password" th:field="*{passWSBeaCukai}"/>
+            <br/>
+            <label>Token WS Portal Bea Cukai</label>
+            <input type="text" th:field="*{tokenWSBeaCukai}"/>
+            <br/><br/><br/><br/>
+            <h3>User Admin Perusahaan</h3>
+            <label>Nama User</label>
+            <input type="text" th:field="*{nama}"/>
+            <br/>
+            <label>Email</label>
+            <input type="text" th:field="*{username}"/>
+            <br/>
+            <label>Password</label>
+            <input type="password" th:field="*{password}"/>
+            <br/>
+            <input type="submit" class="btn btn-lg btn-primary" value="SIMPAN"/>
+        </form>
+    </p>
+</body>
+</html>

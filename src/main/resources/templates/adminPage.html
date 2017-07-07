@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Dashboard')">
+</head>
+<body>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: admin-sidebar('')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('DASHBOARD')"></div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<h4>Main Title</h4>
+								<div class="break-5">Lorem ipsum dolor sit amet, consectetur adipisicing.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<h4>Main Title</h4>
+								<div class="break-5">Lorem ipsum dolor sit amet, consectetur adipisicing.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-4">
+						<div class="panel panel-default panel-widget">
+							<div class="panel-body">
+								<h4>Main Title</h4>
+								<div class="break-5">Lorem ipsum dolor sit amet, consectetur adipisicing.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span class="panel-title pull-left text-black"><i class="fa fa-fw fa-map"></i> Map</span>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-body">
+								Map here
+							</div>
+							<div class="panel-footer">
+								<span class="panel-footer-text text-grey text-size-12"><i class="fa fa-info-circle"></i> last edited at 02/01/2016 18:00</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

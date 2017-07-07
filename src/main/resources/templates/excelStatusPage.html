@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('EXCEL STATUS')">
+</head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar('excel-status')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('EXCEL STATUS')"></div>
+			
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3">
+								<a class="btn btn-primary btn-block" th:href="@{/upload-excel}">
+									<i class="fa fa-fw fa-upload"></i> Upload Excel ...
+								</a>
+							</div>
+						</div>
+						
+						<hr />
+						
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+                                        <th>No</th>
+										<th>Tanggal</th>
+										<th>Status</th>
+										<th>Tot CN/PIBK</th>
+										<th>Tot Barang</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="excl,iterStat : ${dataStatus}">
+										<td th:text="${iterStat.count}">1</td>
+										<td th:text="${excl.dateUpload} ? ${#calendars.format(excl.dateUpload,'dd-MMM-yyyy')}"></td>
+										<td>
+											<!--
+											<span th:text="${#strings.length(excl.keterangan)}>43 ? ${#strings.substring(excl.keterangan,0,42)}"></span>
+											<a href="#" data-toggle="modal" data-target="#myModal">...>>></a>
+											-->
+											<a href="#" data-toggle="modal" data-target="#myModal" th:text="${#strings.abbreviate(excl.keterangan,40)}">...>>></a>
+										</td>
+										<td th:text="${excl.totalHeader}"></td>
+										<td th:text="${excl.totalBarang}"></td>
+										<td>
+											<!--<a th:if="!${excl.sent}" th:href="${excl.checked} ? @{/excel-kirim(id=${excl.id})} : '#'" class="btn" th:classappend="${excl.checked} ? btn-info : btn-danger">Kirim!</a>-->
+											<a th:if="!${excl.sent}" th:href="@{/excel-kirim(id=${excl.id})}" class="btn btn-danger">Kirim!</a>
+											<a th:if="${excl.sent}" th:href="@{/excel-respons(id=${excl.id})}" class="btn btn-info" >Respon</a>
+											<!--<a href="#" class="btn btn-info" role="button">Kirim!</a>-->
+											<a th:if="!${excl.sent}" href="#" class="btn btn-warning" role="button">Koreksi</a>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--MODAL-->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Keterangan Proses</h4>
+				</div>
+				<div class="modal-body">
+					<p>Dokumen anda dalam proses validasi lebih lanjut. Silahkan koreksi jika ada kesalahan</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

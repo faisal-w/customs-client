@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- SIDEBAR UNTUK ADMIN -->
+	<div id="sidebar" th:fragment="admin-sidebar (selected)">
+		<div id="sidebar-wrapper" class="admin">
+			<div class="sidebar-title"><h2>Smart Delivery</h2><span>AdminPanel</span></div>
+			<ul class="sidebar-nav">
+				<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
+				<li class="" th:classappend="${selected} == '' ? active"><a th:href="@{/admin}"><i class="fa fa-fw fa-home"></i><span class="nav-label">Dashboard</span></a></li>
+				<li>
+					<a href="#nav-project" data-toggle="collapse" aria-controls="nav-project"><i class="fa fa-fw fa-building"></i><span class="nav-label">Perusahaan</span></a>
+					<ul th:classappend="${selected} == perusahaan-add or ${selected} == perusahaan-index ? in" 
+						class="sidebar-nav-child collapse collapseable" id="nav-project">
+						<li>
+							<a th:href="@{/perusahaan/index.html}">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								<span class="nav-label">Index</span>
+							</a>
+						</li>
+						<li>
+							<a th:href="@{/perusahaan/add.html}">
+								<i class="fa fa-plus-square" aria-hidden="true"></i>
+								<span class="nav-label">Add</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#nav-client" data-toggle="collapse" aria-controls="nav-client">
+						<i class="fa fa-fw fa-user"></i>
+						<span class="nav-label">User</span>
+					</a>
+					<ul th:classappend="${selected} == user-add or ${selected} == user-index ? in"
+						class="sidebar-nav-child collapse collapseable" id="nav-client">
+						<li>
+							<a th:href="@{/user/index.html}">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								<span class="nav-label">Index</span>
+							</a>
+						</li>
+						<!--<li>
+							<a th:href="@{/user/add.html}">
+								<i class="fa fa-user-plus"></i>
+								<span class="nav-label">Add</span>
+							</a>
+						</li>-->
+					</ul>
+				</li>
+				<li>
+					<a href="#nav-deposit" data-toggle="collapse" aria-controls="nav-deposit">
+						<i class="fa fa-fw fa-money"></i>
+						<span class="nav-label">Deposit</span>
+					</a>
+					<ul th:classappend="${selected} == deposit-add or ${selected} == deposit-index ? in"
+						class="sidebar-nav-child collapse collapseable" id="nav-deposit">
+						<li>
+							<a th:href="@{/deposit/index.html}">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								<span class="nav-label">Index</span>
+							</a>
+						</li>
+						<li>
+							<a th:href="@{/deposit/add.html}">
+								<i class="fa fa-plus"></i>
+								<span class="nav-label">Add</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#nav-bank" data-toggle="collapse" aria-controls="nav-bank">
+						<i class="fa fa-fw fa-university"></i>
+						<span class="nav-label">Bank</span>
+					</a>
+					<ul th:classappend="${selected} == bank-add or ${selected} == bank-index ? in"
+						class="sidebar-nav-child collapse collapseable" id="nav-bank">
+						<li>
+							<a th:href="@{/bank/index.html}">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								<span class="nav-label">Index</span>
+							</a>
+						</li>
+						<li>
+							<a th:href="@{/bank/add.html}">
+								<i class="fa fa-plus"></i>
+								<span class="nav-label">Add</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- SIDEBAR UNTUK NON-ADMIN -->
+	<div id="sidebar" th:fragment="sidebar (selected)">
+		<div id="sidebar-wrapper">
+			<div class="sidebar-title"><h2>Smart Delivery</h2><span>Perusahaan</span></div>
+			<ul class="sidebar-nav">
+				<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
+				<li class="" th:classappend="${selected} == '' ? active">
+					<a th:href="@{/}">
+						<i class="fa fa-fw fa-home"></i>
+						<span class="nav-label">Dashboard</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'form-cnpibk' ? active">
+					<a th:href="@{/form-cnpibk}">
+						<i class="fa fa-fw fa-file"></i>
+						<span class="nav-label">Form CNPIBK</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'drafts' ? active">
+					<a th:href="@{/drafts}">
+						<i class="fa fa-fw fa-file-text"></i>
+						<span class="nav-label">Dokumen Draft</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'response' ? active">
+					<a th:href="@{/response}">
+						<i class="fa fa-fw fa-spinner"></i>
+						<span class="nav-label">Response</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'upload-excel' ? active">
+					<a th:href="@{/upload-excel}">
+						<i class="fa fa-fw fa-upload"></i>
+						<span class="nav-label">Upload Excel</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'excel-status' ? active">
+					<a th:href="@{/excel-status}">
+						<i class="fa fa-fw fa-spinner"></i>
+						<span class="nav-label">Excel Status</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'history-deposit' ? active">
+					<a th:href="@{/history-deposit}">
+						<i class="fa fa-fw fa-history"></i>
+						<span class="nav-label">History Deposit</span>
+					</a>
+				</li>
+				<li class="" th:classappend="${selected} == 'profile' ? active">
+					<a th:href="@{/profile}">
+						<i class="fa fa-fw fa-user-circle"></i>
+						<span class="nav-label">Profile</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div>
+		<ul>
+			<li>
+					<a href="#nav-project" data-toggle="collapse" aria-controls="nav-project">
+						<i class="fa fa-fw fa-building"></i>
+						<span class="nav-label">Penerima</span>
+					</a>
+					<ul th:classappend="${selected} == penerima-add or ${selected} == penerima-index ? in" 
+						class="sidebar-nav-child collapse collapseable" id="nav-project">
+						<li>
+							<a th:href="@{/penerima/index.html}">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								<span class="nav-label">Index</span>
+							</a>
+						</li>
+						<li>
+							<a th:href="@{/penerima/add.html}">
+								<i class="fa fa-plus-square" aria-hidden="true"></i>
+								<span class="nav-label">Add</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#nav-pengirim" data-toggle="collapse" aria-controls="nav-pengirim">
+						<i class="fa fa-fw fa-paper-plane"></i>
+						<span class="nav-label">Pengirim</span>
+					</a>
+					<ul th:classappend="${selected} == pengirim-add or ${selected} == pengirim-index ? in" 
+						class="sidebar-nav-child collapse collapseable" id="nav-pengirim">
+						<li>
+							<a th:href="@{/pengirim/index.html}">
+								<i class="fa fa-list" aria-hidden="true"></i>
+								<span class="nav-label">Index</span>
+							</a>
+						</li>
+						<li>
+							<a th:href="@{/pengirim/add.html}">
+								<i class="fa fa-plus-square" aria-hidden="true"></i>
+								<span class="nav-label">Add</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+		</ul>
+	</div>
+</body>
+</html>

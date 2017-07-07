@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Deposit')"></head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: admin-sidebar('deposit-index')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('DEPOSIT')"></div>
+			<!-- content here -->
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+                                        <th>No</th>
+										<th>Nama Perusahaan</th>
+										<th>Deposit</th>
+										<!--<th>Bank Tujuan</th>
+										<th>Bank Pengirim</th>
+										<th>No.Referensi</th>-->
+										<th>Keterangan</th>
+									</tr>
+								</thead>
+								<tbody>
+                                    <tr th:each="deposit,iterStat : ${dataDeposit}">
+                                        <td th:text="${iterStat.count}"></td>
+                                        <td th:text="${deposit.perusahaan} ? ${deposit.perusahaan.namaPerusahaan}"></td>
+                                        <td th:text="${deposit.nilaiTransaksi}"></td>
+                                        <td th:text="${deposit.keterangan}"></td>
+                                    </tr>
+                                </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

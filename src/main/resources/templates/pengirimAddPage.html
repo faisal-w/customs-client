@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Pengirim - Add')">
+</head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar('pengirim-add')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('PENGIRIM - ADD')"></div>
+			
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form method="POST">
+							<div class="form-group col-lg-4">
+								<label>Nama Pengirim</label>
+								<input class="form-control" type="text" name="nama" placeholder="Nama Pengirim" />
+							</div>
+							<div class="form-group col-lg-2">
+								<label>Kode Negara</label>
+								<input class="form-control" type="text" name="kode_negara" placeholder="Kode Negara" />
+							</div>
+							<div class="form-group col-lg-6">
+								<label>Alamat</label>
+								<input class="form-control" type="text" name="alamat" placeholder="Alamat" />
+							</div>
+							<div class="form-group col-lg-2 pull-right">
+								<label>&nbsp;</label>
+								<button class="btn btn-primary btn-block" type="submit">Simpan</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

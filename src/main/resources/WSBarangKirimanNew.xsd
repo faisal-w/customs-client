@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.0-1 (tags/2.2.0u1-7139; 2012-06-02T10:55:19+0000) JAXWS-RI/2.2.6-2 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.pibk.go.id/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.pibk.go.id/">
+
+<xs:element name="getResponByAwb" type="tns:getResponByAwb"/>
+
+<xs:element name="getResponByAwbResponse" type="tns:getResponByAwbResponse"/>
+
+<xs:element name="kirimData" type="tns:kirimData"/>
+
+<xs:element name="kirimDataResponse" type="tns:kirimDataResponse"/>
+
+<xs:element name="requestRespon" type="tns:requestRespon"/>
+
+<xs:element name="requestResponResponse" type="tns:requestResponResponse"/>
+
+<xs:element name="serviceTracking" type="tns:serviceTracking"/>
+
+<xs:element name="serviceTrackingResponse" type="tns:serviceTrackingResponse"/>
+
+<xs:element name="updateBc11" type="tns:updateBc11"/>
+
+<xs:element name="updateBc11Response" type="tns:updateBc11Response"/>
+
+<xs:complexType name="getResponByAwb">
+<xs:sequence>
+<xs:element name="data" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="sign" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getResponByAwbResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="serviceTracking">
+<xs:sequence>
+<xs:element name="noAwb" type="xs:string" minOccurs="0"/>
+<xs:element name="npwp" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="sign" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="serviceTrackingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestRespon">
+<xs:sequence>
+<xs:element name="npwp" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="sign" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestResponResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateBc11">
+<xs:sequence>
+<xs:element name="data" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="sign" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateBc11Response">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="kirimData">
+<xs:sequence>
+<xs:element name="data" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="sign" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="kirimDataResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,110 @@
+<div class="tab-pane" th:classappend="${page}=='PUNGUTAN' ? active" id="tab-pungutan" th:fragment="form">
+<p></p>
+	<div class="col-sm-12">
+		<div class="col-sm-12 form-group">
+			<div class="col-sm-4 text-center">
+				<h4>KODE PUNGUTAN</h4>
+			</div>
+			<div class="col-sm-8 text-center">
+				<h4>NILAI</h4>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12" id="static-pungutan-container">
+		<!-- BM -->
+		<div class="col-sm-12">
+			<div class="form-group col-sm-4">
+				<input type="hidden" name="headerPungutans[0].kode_pungutan" value="1" />
+				<input type="text" class="form-control" value="1 - BM" disabled="disabled" />
+			</div>
+			<div class="form-group col-sm-8">
+				<input id="totalBM" type="hidden" name="headerPungutans[0].nilai" value="" />
+				<input id="text_totalBM" type="text" class="form-control text-right" value="" disabled="disabled" />
+			</div>
+		</div>
+		<!-- PPH -->
+		<div class="col-sm-12">
+			<div class="form-group col-sm-4">
+				<input type="hidden" name="headerPungutans[1].kode_pungutan" value="2" />
+				<input type="text" class="form-control" value="2 - PPH" disabled="disabled" />
+			</div>
+			<div class="form-group col-sm-8">
+				<input id="totalPPH" type="hidden" name="headerPungutans[1].nilai" value="" />
+				<input id="text_totalPPH" type="text" class="form-control text-right" value="" disabled="disabled" />
+			</div>
+		</div>
+		<!-- PPN -->
+		<div class="col-sm-12">
+			<div class="form-group col-sm-4">
+				<input type="hidden" name="headerPungutans[2].kode_pungutan" value="3" />
+				<input type="text" class="form-control" value="3 - PPN" disabled="disabled" />
+			</div>
+			<div class="form-group col-sm-8">
+				<input id="totalPPN" type="hidden" name="headerPungutans[2].nilai" value="" />
+				<input id="text_totalPPN" type="text" class="form-control text-right" value="" disabled="disabled" />
+			</div>
+		</div>
+		<!-- PPNBM -->
+		<div class="col-sm-12">
+			<div class="form-group col-sm-4">
+				<input type="hidden" name="headerPungutans[3].kode_pungutan" value="4" />
+				<input type="text" class="form-control" value="4 - PPNBM" disabled="disabled" />
+			</div>
+			<div class="form-group col-sm-8">
+				<input id="totalPPNBM" type="hidden" name="headerPungutans[3].nilai" value="" />
+				<input id="text_totalPPNBM" type="text" class="form-control text-right" value="" disabled="disabled" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-sm-12">
+		<div class="col-sm-12">
+			<div class="col-sm-4 text-right">
+				<h4>TOTAL :</h4>
+			</div>
+			<div class="col-sm-8 text-right">
+				<h4 id="totalHeaderPungutan">0</h4>
+			</div>
+		</div>
+	</div>
+	<script>
+	// <![CDATA[
+	$(function(){
+		var targetTotalHeaderPungutan = $('#totalHeaderPungutan');
+		
+		$('#static-pungutan-container').find('input[id^=total]').on('keyup', function(){
+			var totalHeaderPungutan = 0;
+			
+			$('#static-pungutan-container').find('input[id^=total]').each(function(k,v){
+				var nilai = parseFloat($(this).val()) 
+				
+				if (! isNaN(nilai) && nilai > 0) {
+					if (nilai < 1000) {
+						nilai = 1000	
+					}
+					else if (nilai % 1000 != 0) {
+						nilai = nilai - (nilai % 1000) + 1000
+					}
+					
+					var id = $(this).attr('id');
+					
+					// Replace Value
+					$(this).val(nilai)
+					$('#text_'+id).val(nilai)
+				}
+				
+				totalHeaderPungutan += isNaN(nilai) ? 0 : nilai
+			})
+			
+			targetTotalHeaderPungutan.html(numeral(totalHeaderPungutan).format('0,00.00'));
+			$('#total_dibayar').val(totalHeaderPungutan)
+			
+		})
+		
+		$('#static-pungutan-container').find('input[id^=total]').on('change', function(){
+			$(this).trigger('keyup')
+		})
+	})
+	// ]]>
+	</script>
+</div>

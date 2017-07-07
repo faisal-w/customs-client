@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('History Deposit')"></head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar('history-deposit')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('HISTORY DEPOSIT')"></div>
+			<!-- content here -->
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+                                        <th>No</th>
+										<th>Nilai</th>
+										<th>Status</th>
+										<th>Keterangan</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="perusahaan,iterStat : ${dataPerusahaan}">
+                                        <td th:text="${iterStat.count}">1</td>
+                                        <td th:text="${perusahaan.namaPerusahaan}"></td>
+                                        <td></td>
+                                    </tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

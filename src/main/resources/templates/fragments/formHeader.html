@@ -1,0 +1,277 @@
+<div class="tab-pane" th:classappend="${page}=='HEADER' ? active" id="tab-header" th:fragment="form">
+	<p></p>
+	
+	<div class="panel panel-default panel-widget">
+		<input type="hidden" th:field="*{idLogCnPibk}" name="idLogCnPibk"/>
+		<div class="panel-body">
+			<div class="form-group col-sm-2">
+				<label>KODE KANTOR</label>
+				<input type="text" class="form-control" th:field="*{kdKantor}" name="KD_KANTOR" value="" />
+			</div>
+			<div class="form-group col-sm-8">
+				<!-- nama kantor -->	
+			</div>
+			<div class="form-group col-sm-2">
+				<label>JENIS DOKUMEN</label>
+				<select class="form-control" th:field="*{jnsAju}" name="JNS_AJU">
+					<option value="1">1 - CN</option>
+					<option value="2">2 - PIBK</option>
+				</select>
+			</div>
+			<div class="form-group col-sm-12">
+				<label>JENIS PIBK</label>
+				<select class="form-control" th:field="*{kdJnsPibk}" name="KD_JNS_PIBK">
+					<option value="1">1 - Barang Pindahan</option>
+					<option value="2">2 - Barang Kiriman Melalui PJT</option>
+					<option value="3">3 - Barang Impor Sementara Dibawa Penumpang</option>
+					<option value="4">4 - Barang Impor Tertentu</option>
+					<option value="5">5 - Barang Pribadi Penumpang</option>
+					<option value="9">9 - Lainnya</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-heading">
+			<h3>PENGANGKUT</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group col-sm-2">
+				<label>JENIS</label>
+				<select class="form-control" name="KD_JNS_ANGKUT" th:field="*{kdJnsAngkut}">
+					<option value="4">4</option>
+					<option value="1">1</option>
+			</select>
+			</div>
+			<div class="form-group col-sm-4">
+				<label>NAMA</label>
+				<input type="text" class="form-control" th:field="*{nmPengangkut}" name="NM_PENGANGKUT" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>NO FLIGHT</label>
+				<input type="text" class="form-control" th:field="*{noFlight}" name="NO_FLIGHT" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>KODE NEGARA</label>
+				<input type="text" class="form-control" th:field="*{kdNegaraAsal}" name="KD_NEGARA_ASAL" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>PELABUHAN MUAT</label>
+				<input type="text" class="form-control" th:field="*{kdPelMuat}" name="KD_PEL_MUAT" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>PELABUHAN BONGKAR</label>
+				<input type="text" class="form-control" th:field="*{kdPelBongkar}" name="KD_PEL_BONGKAR" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>KODE GUDANG</label>
+				<input type="text" class="form-control" th:field="*{kdGudang}" name="KD_GUDANG" value="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-body">
+			<div class="form-group col-sm-4">
+				<label>NO BARANG</label>
+				<input type="text" class="form-control" th:field="*{noBarang}" name="NO_BARANG" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>JUMLAH BARANG</label>
+				<input type="text" class="form-control" th:field="*{jmlBrg}" name="JML_BRG" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>NO INVOICE</label>
+				<input type="text" class="form-control" th:field="*{noInvoice}" name="NO_INVOICE" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>TGL INVOICE</label>					<!--th:value="${#dates.format(prod.createdOn,'yyyy/MM/dd HH:mm')}"-->
+				<input type="text" class="form-control date" th:field="*{tglInvoice}" name="TGL_INVOICE" value="2017/03/29" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-body">
+			<div class="form-group col-sm-4">
+				<label>NO BC11</label>
+				<input type="text" class="form-control" th:field="*{noBc11}" name="NO_BC11" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>TGL BC11</label>
+				<input type="text" class="form-control date" th:field="*{tglBc11}" name="TGL_BC11" placeholder="yyyy/MM/dd" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>POS</label>
+				<input type="text" class="form-control" th:field="*{noPosBc11}" name="NO_POS_BC11" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>SUB POS</label>
+				<input type="text" class="form-control" th:field="*{noSubposBc11}" name="NO_SUBPOS_BC11" value="" />
+			</div>
+			<div class="form-group col-sm-2">
+				<label>SUB SUB POS</label>
+				<input type="text" class="form-control" th:field="*{noSubsubposBc11}" name="NO_SUBSUBPOS_BC11" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>NO MASTER BLAWB</label>
+				<input type="text" class="form-control" th:field="*{noMasterBlawb}" name="NO_MASTER_BLAWB" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>TGL MASTER BLAWB</label>
+				<input type="text" class="form-control date" th:field="*{tglMasterBlawb}" name="TGL_MASTER_BLAWB" placeholder="yyyy/mm/dd" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>NO HOUSE BLAWB</label>
+				<input type="text" class="form-control" th:field="*{noHouseBlawb}" name="NO_HOUSE_BLAWB" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>TGL HOUSE BLAWB</label>
+				<input type="text" class="form-control date" th:field="*{tglHouseBlawb}" name="TGL_HOUSE_BLAWB" placeholder="yyyy/mm/dd" value="2017/03/29" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-heading">
+			<h3>SHIPPER</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group col-sm-2">
+				<label>KODE NEGARA</label>
+				<input type="text" class="form-control" th:field="*{kdNegPengirim}" name="KD_NEG_PENGIRIM" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>NAMA</label>
+				<input type="text" class="form-control" th:field="*{nmPengirim}" name="NM_PENGIRIM" value="" />
+			</div>
+			<div class="form-group col-sm-6">
+				<label>ALAMAT</label>
+				<input type="text" class="form-control" th:field="*{alPengirim}" name="AL_PENGIRIM" value="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-heading">
+			<h3>CONSIGNEE</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group col-sm-2">
+				<label>JENIS ID</label>
+				<select class="form-control" th:field="*{jnsIdPenerima}" name="JNS_ID_PENERIMA">
+					<option value=""></option>
+					<option value="5">5</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div class="form-group col-sm-5">
+				<label>NO ID</label>
+				<input type="text" class="form-control" th:field="*{noIdPenerima}" name="NO_ID_PENERIMA" value="" />
+			</div>
+			<div class="form-group col-sm-5">
+				<label>NAMA</label>
+				<input type="text" class="form-control" th:field="*{nmPenerima}" name="NM_PENERIMA" value="" />
+			</div>
+			<div class="form-group col-sm-8">
+				<label>ALAMAT</label>
+				<input type="text" class="form-control" th:field="*{alPenerima}" name="AL_PENERIMA" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>TELP</label>
+				<input type="text" class="form-control" th:field="*{telpPenerima}" name="TELP_PENERIMA" value="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-heading">
+			<h3>PEMBERITAHU</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group col-sm-2">
+				<label>JENIS ID</label>
+				<select class="form-control" th:field="*{jnsIdPemberitahu}" name="JNS_ID_PEMBERITAHU">
+					<option value=""></option>
+					<option value="5">5</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div class="form-group col-sm-5">
+				<label>NO ID</label>
+				<input type="text" class="form-control" th:field="*{noIdPemberitahu}" name="NO_ID_PEMBERITAHU" value="" />
+			</div>
+			<div class="form-group col-sm-5">
+				<label>NAMA</label>
+				<input type="text" class="form-control" th:field="*{nmPemberitahu}" name="NM_PEMBERITAHU" value="" />
+			</div>
+			<div class="form-group col-sm-6">
+				<label>ALAMAT</label>
+				<input type="text" class="form-control" th:field="*{alPemberitahu}" name="AL_PEMBERITAHU" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>NO SKEP</label>
+				<input type="text" class="form-control" th:field="*{noIzinPemberitahu}" name="NO_IZIN_PEMBERITAHU" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>TGL SKEP</label>
+				<input type="text" class="form-control" th:field="*{tglIzinPemberitahu}" name="TGL_IZIN_PEMBERITAHU" value="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default panel-widget">
+		<div class="panel-body">
+			<div class="form-group col-sm-3">
+				<label>VALUTA</label>
+				<input type="text" class="form-control" th:field="*{kdVal}" name="KD_VAL" value="USD" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>NDPBM</label>
+				<input type="text" class="form-control" th:field="*{ndpbm}" name="NDPBM" value="0" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>FOB</label>
+				<input type="text" class="form-control" th:field="*{fob}" name="FOB" value="0" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>CIF (USD)</label>
+				<input type="text" class="form-control" th:field="*{cif}" name="CIF" value="0" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>NETTO</label>
+				<input type="text" class="form-control" th:field="*{netto}" name="NETTO" value="0" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>BRUTO</label>
+				<input type="text" class="form-control" th:field="*{bruto}" name="BRUTO" value="0" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>ASURANSI</label>
+				<input type="text" class="form-control" th:field="*{asuransi}" name="ASURANSI" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>FREIGHT</label>
+				<input type="text" class="form-control" th:field="*{freight}" name="FREIGHT" value="0" />
+			</div>
+			<div class="form-group col-sm-5">
+				<label>NAMA BILLING</label>
+				<input type="text" class="form-control" th:field="*{namaBilling}" name="NAMA_BILLING" value="" />
+			</div>
+			<div class="form-group col-sm-4">
+				<label>NPWP BILLING</label>
+				<input type="text" class="form-control" th:field="*{npwpBilling}" name="NPWP_BILLING" value="" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label>TOTAL DIBAYAR</label>
+				<input id="total_dibayar" type="text" title="hasil total di header pungutan. pembulatan 1000." class="form-control" th:field="*{totDibayar}" name="TOT_DIBAYAR" value="0" />
+			</div>
+		</div>
+	</div>
+
+</div>

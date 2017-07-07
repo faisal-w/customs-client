@@ -1,0 +1,218 @@
+<div class="tab-pane" th:classappend="${page}=='BARANG' ? active" id="tab-detil-barang" th:fragment="form">
+<p></p>
+
+<div id="indukDetilBarang">
+	<div th:each="brg, stat : *{detilBarangs}">
+		<div>
+			<div class="col-sm-12">
+				<h3 class="form-group col-sm-12">
+					<i class="fa fa-fw fa-cube" aria-hidden="true"></i> BARANG
+				</h3>
+
+				<div class="form-group col-sm-4">
+					<label>SERI BARANG</label>
+					<input type="text" class="form-control" name="SERI_BRG" th:field="*{detilBarangs[__${stat.index}__].seriBrg}" value="" />
+				</div>
+				<div class="form-group col-sm-5">
+					<label>HSCODE</label>
+					<input type="text" placeholder="autocomplete" class="form-control" name="HS_CODE" th:field="*{detilBarangs[__${stat.index}__].hsCode}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>KODE NEGARA ASAL</label>
+					<input type="text" class="form-control" name="KD_NEG_ASAL" th:field="*{detilBarangs[__${stat.index}__].kdNegAsal}" value="" />
+				</div>
+				<div class="form-group col-sm-12">
+					<label>URAIAN BARANG</label>
+					<input type="text" class="form-control" name="UR_BRG" th:field="*{detilBarangs[__${stat.index}__].urBrg}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>JUMLAH KEMASAN</label>
+					<input type="text" class="form-control" name="JML_KMS" th:field="*{detilBarangs[__${stat.index}__].jmlKms}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>JENIS KEMASAN</label>
+					<input type="text" placeholder="autocomplete" class="form-control" name="JNS_KMS" th:field="*{detilBarangs[__${stat.index}__].jnsKms}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>KODE SATUAN HARGA</label>
+					<input type="text" class="form-control" name="KD_SAT_HRG" th:field="*{detilBarangs[__${stat.index}__].kdSatHrg}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>JUMLAH SATUAN HARGA</label>
+					<input type="text" class="form-control" name="JML_SAT_HRG" th:field="*{detilBarangs[__${stat.index}__].jmlSatHrg}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>CIF (USD)</label>
+					<input data-cif="cif" type="text" class="form-control" name="CIF" th:field="*{detilBarangs[__${stat.index}__].cif}" value="" />
+				</div>
+				<div class="form-group col-sm-3">
+					<label>SKEP PEMBEBASAN</label>
+					<select class="form-control" th:field="*{detilBarangs[__${stat.index}__].flBebas}" name="FL_BEBAS">
+						<option value="0">0 - Bayar</option>
+						<option value="1">1 - Bebas</option>
+					</select>
+				</div>
+				<div class="form-group col-sm-4">
+					<label>NO SKEP</label>
+					<input type="text" class="form-control" name="NO_SKEP" th:field="*{detilBarangs[__${stat.index}__].noSkep}" value="" />
+				</div>
+				<div class="form-group col-sm-2">
+					<label>TGL SKEP</label>
+					<input type="text" class="form-control date" name="TGL_SKEP" th:field="*{detilBarangs[__${stat.index}__].tglSkep}" placeholder="yyyy/mm/dd" />
+				</div>
+
+				<div class="col-sm-12">
+					<div class="col-sm-12">
+						<h3 class="form-group col-sm-12">
+							DETIL PUNGUTAN
+						</h3>
+					</div>
+					
+					<div class="col-sm-12 form-group">
+						<!-- HEADER -->
+						<div class="col-sm-4">
+							<h4>KODE PUNGUTAN</h4>
+						</div>
+						<div class="col-sm-4">
+							<h4>TARIF (%)</h4>
+						</div>
+						<div class="col-sm-4">
+							<h4>NILAI</h4>
+						</div>
+					</div>
+					
+					<!-- BM -->
+					<div class="col-sm-12 form-group">
+						<input type="hidden" name="kdTarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[0].kdTarif}" value="1" />
+						<input type="hidden" name="kdPungutan" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[0].kdPungutan}" value="1" />
+						<div class="col-sm-4">
+							<input type="text" class="form-control" value="1 - BM" disabled="disabled" />
+						</div>
+						<div class="col-sm-4">
+							<input data-tarif="BM" type="text" name="tarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[0].tarif}" value="" class="form-control text-right" />
+						</div>
+						<div class="col-sm-4">
+							<input data-pungutan="BM" type="hidden" name="nilai" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[0].nilai}" value="" />
+							<input type="text" class="form-control text-right" disabled="disabled" />
+						</div>
+					</div>
+					<!-- PPH -->
+					<div class="col-sm-12 form-group">
+						<input type="hidden" name="kdTarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[1].kdTarif}" value="1" />
+						<input type="hidden" name="kdPungutan" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[1].kdPungutan}" value="2" />
+						<div class="col-sm-4">
+							<input type="text" class="form-control" value="2 - PPH" disabled="disabled" />
+						</div>
+						<div class="col-sm-4">
+							<select data-tarif="PPH" name="tarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[1].tarif}" class="form-control">
+								<option value="2.5">2.5</option>
+								<option value="7.5">7.5</option>
+								<option value="10">10</option>
+								<option value="15">15</option>
+								<option value="20">20</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<input type="hidden" data-pungutan="PPH"  name="nilai" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[1].nilai}" value="" />
+							<input type="text" value="" class="form-control text-right" disabled="disabled" />
+						</div>
+					</div>
+					<!-- PPN -->
+					<div class="col-sm-12 form-group">
+						<input type="hidden" name="kdTarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[2].kdTarif}" value="1" />
+						<input type="hidden" name="kdPungutan" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[2].kdPungutan}" value="3" />
+						<div class="col-sm-4">
+							<input type="text" class="form-control" value="3 - PPN" disabled="disabled" />
+						</div>
+						<div class="col-sm-4">
+							<input data-tarif="PPN" type="text" name="tarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[2].tarif}" value="" class="form-control text-right" />
+						</div>
+						<div class="col-sm-4">
+							<input data-pungutan="PPN" type="hidden" name="nilai" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[2].nilai}" value="" />
+							<input type="text" class="form-control text-right" disabled="disabled" />
+						</div>
+					</div>
+					<!-- PPNBM -->
+					<div class="col-sm-12 form-group">
+						<input type="hidden" name="kdTarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[3].kdTarif}" value="1" />
+						<input type="hidden" name="kdPungutan" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[3].kdPungutan}" value="4" />
+						<div class="col-sm-4">
+							<input type="text" class="form-control" value="4 - PPNBM" disabled="disabled" />
+						</div>
+						<div class="col-sm-4">
+							<input data-tarif="PPNBM" type="text" name="tarif" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[3].tarif}" value="" class="form-control text-right" />
+						</div>
+						<div class="col-sm-4">
+							<input data-pungutan="PPNBM" type="hidden" name="nilai" th:field="*{detilBarangs[__${stat.index}__].detilPungutans[3].nilai}" value="" />
+							<input type="text" class="form-control text-right" disabled="disabled" />
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12">
+					<div style="border-bottom: 2px dashed #a6a6a6; padding-bottom: 10px; margin-bottom: 10px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div>
+		<div class="col-sm-12">
+			<div class="col-sm-3">
+				<button class="btn btn-primary btn-block" type="submit" name="addDetilBarang" id="add-detil-barang">
+					<i class="fa fa-plus" aria-hidden="true"></i> <span>Detil Barang</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+	// <![CDATA[
+	$(function(){
+		var updatePerItem = function(){
+			var induk = $('#indukDetilBarang');
+			
+			var dataPungutan = ['BM','PPH','PPN','PPNBM'];
+			
+			dataPungutan.forEach(function(pungutan, index){
+				
+				// Reset Nilai Total
+				$('#total'+pungutan).val('0')
+				
+				induk.find('input[data-pungutan='+pungutan+']').each(function(){
+					var barangDetail = $(this).parent().parent().parent().parent()
+					var indukDetail = $(this).parent().parent()
+					var cif = parseFloat(barangDetail.find('input[data-cif=cif]').val())
+					var tarif = parseFloat(indukDetail.find('[data-tarif='+pungutan+']').val())
+					var ndpbm = parseFloat($('#ndpbm').val())
+					
+					var cifStat = isNaN(cif)
+					var tarifStat = isNaN(tarif)
+					var ndpbmStat = isNaN(ndpbm)
+					
+					if (! cifStat && ! tarifStat && ! ndpbmStat) {
+						var nilai = cif * ndpbm * tarif / 100
+						
+						$(this).val(nilai)
+						$(this).next().val(nilai)
+						
+						// Append untuk mendapatkan Total
+						var lastTotal = parseFloat($('#total'+pungutan).val())
+						$('#total'+pungutan).val( lastTotal + nilai)
+						$('#total'+pungutan).trigger('keyup')
+					}
+				})
+			})
+			
+		}
+		
+		$('input[data-cif=cif], [data-tarif], #ndpbm')
+			.on('keyup', updatePerItem)
+			.on('change', updatePerItem)
+			.trigger('change')
+	})
+	// ]]>
+	</script>
+</div>

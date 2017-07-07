@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Drafts')"></head>
+<body>
+    <div th:replace="fragments/footer :: footer"></div>
+    <div class="container-fluid" id="wrapper">
+        <div th:replace="fragments/sidebar :: sidebar('drafts')">sidebar</div>
+        <div id="content">
+            <div th:replace="fragments/header :: login-header ('DRAFTS')"></div>
+            <!-- content here -->
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>NO.</th>
+                                        <th>NO.BARANG</th>
+                                        <th>TGL.HOUSE BLAWB</th>
+                                        <th>Tanggal Pengisian</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="draft,iterStat : ${dataDrafts}">
+                                        <td th:text="${iterStat.count}">1</td>
+                                        <td th:text="${draft.noBarang}"></td>
+                                        <td th:text="${draft.tglHouseBlawb} ? ${#calendars.format(draft.tglHouseBlawb,'dd-MMM-yyyy')}"></td>
+                                        <td th:text="${draft.tglSimpan}"></td>
+                                        <td><a th:href="@{/drafts/edit(id=${draft.idLogCnPibk})}" class="btn btn-info">Edit</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

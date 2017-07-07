@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Form CNPIBK')">
+</head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar('form-cnpibk')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('Form CNPIBK')"></div>
+			
+			<div class="col-xs-12">
+				<form method="POST" th:action="@{/form-cnpibk}" th:object="${cnPibk}">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<ul class="nav nav-tabs" id="tabs">
+							  <li th:classappend="${page}=='HEADER' ? active : ''"><a style="outline:0;font-size:1.2em;font-style:strong;" data-toggle="tab" href="#tab-header">Header</a></li>
+							  <li th:classappend="${page}=='PUNGUTAN' ? active : ''"><a style="outline:0;font-size:1.2em;font-style:strong;" data-toggle="tab" href="#tab-pungutan">Header Pungutan</a></li>
+							  <li th:classappend="${page}=='BARANG' ? active : ''"><a style="outline:0;font-size:1.2em;font-style:strong;" data-toggle="tab" href="#tab-detil-barang">Detil Barang</a></li>
+							</ul>
+
+							<div class="tab-content clearfix">
+								<div class="tab-pane" th:classappend="${page}=='BARANG' ? active" id="tab-header" th:replace="fragments/formHeader :: form">
+																							
+								</div>
+								
+								<div class="tab-pane" th:classappend="${page}=='PUNGUTAN' ? active" id="tab-pungutan" th:replace="fragments/formHeaderPungutan :: form">
+								</div>
+								
+								<div class="tab-pane" th:classappend="${page}=='BARANG' ? active" id="tab-detil-barang" th:replace="fragments/formDetilBarang :: form">
+								</div>
+							</div>
+						</div>
+						
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-lg-3 pull-right">
+									<button type="submit" class="btn btn-danger btn-block">
+										<i class="fa fa-paper-plane"></i> Ready
+									</button>
+								</div>
+								<div class="col-lg-3 pull-right">
+									<button type="submit" class="btn btn-primary btn-block" name="saveDraft">
+										<i class="fa fa-floppy"></i> Save as Draft
+									</button>
+								</div>
+							</div>
+						</div>			
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<link rel="stylesheet" th:href="@{/static/css/bootstrap-datepicker.min.css}" />
+	<script th:src="@{/static/js/bootstrap-datepicker.min.js}"></script>
+	<script>
+		$(function(){
+			$('.date').datepicker({
+				format: 'yyyy/mm/dd',
+				autoclose: true
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Response')"></head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: sidebar('response')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('RESPONSE')"></div>
+			<!-- content here -->
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+                                        <th>NO.</th>
+                                        <th>TGL.HOUSE BLAWB</th>
+										<th>NO.BARANG</th>
+										<th>STATUS</th>
+										<th>KETERANGAN</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="respon,iterStat : ${dataRespons}">
+                                        <td th:text="${iterStat.count}">1</td>
+                                        <td th:text="${respon.cnPibkTerkait.tglHouseBlawb} ? ${#calendars.format(respon.cnPibkTerkait.tglHouseBlawb,'dd-MMM-yyyy')}"></td>
+                                        <td th:text="${respon.cnPibkTerkait.noBarang}"></td>
+                                        <td th:text="${respon.kodeRespon}"></td>
+                                        <td>
+											<span th:text="${respon.keterangan}"></span>
+											<br/>
+											<div th:if="${respon.detailRespon}">
+												<a th:if="${respon.detailRespon.filePdf}"
+												   th:href="@{/pdf/} + ${respon.detailRespon.filePdf}">Lampiran Pdf</a>
+											</div>
+										</td>
+                                    </tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

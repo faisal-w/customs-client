@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Perusahaan - Add')">
+</head>
+<body>
+	<div th:replace="fragments/footer :: footer"></div>
+	<div class="container-fluid" id="wrapper">
+		<div th:replace="fragments/sidebar :: admin-sidebar('perusahaan-add')">sidebar</div>
+		<div id="content">
+			<div th:replace="fragments/header :: login-header ('PERUSAHAAN - ADD')"></div>
+			
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form method="POST" th:action="@{/perusahaan/add.html}" th:object="${perusahaanAndUserDto}">
+							<div class="form-group col-lg-6">
+								<label>Nama Perusahaan</label>
+								<input class="form-control" type="text" th:field="*{namaPerusahaan}" placeholder="Nama Perusahaan" />
+							</div>
+							<div class="form-group col-lg-6">
+								<label>Alamat</label>
+								<input class="form-control" type="text" th:field="*{alamat}" placeholder="Alamat" />
+							</div>
+							<div class="form-group col-lg-4">
+								<label>Jenis Deposit</label>
+								<select class="form-control" th:field="*{jenisDeposit}">
+									<option value="kg" th:value="kg">By KG</option>
+									<option value="dok" th:value="dok">By Dok</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-4">
+								<label>Jenis ID</label>
+								<select name="jenis_id_pemberitahu" class="form-control" disabled="true">
+									<option value="5">NPWP</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-4">
+								<label>Nomor NPWP</label>
+								<input class="form-control" type="text" th:field="*{npwp}" placeholder="NPWP" />
+							</div>
+                            <div class="form-group col-lg-4">
+                                <label>User Portal Bea Cukai</label>
+                                <input class="form-control" th:field="*{userWSBeaCukai}" type="text" placeholder="User Portal" />
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Password Portal Bea Cukai</label>
+                                <input class="form-control" type="text" th:field="*{passWSBeaCukai}" placeholder="password portal" />
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Token Bea Cukai</label>
+                                <input class="form-control" type="text" th:field="*{tokenWSBeaCukai}" placeholder="token" />
+                            </div>
+							<div class="form-group col-lg-4">
+								<label>Nomor Izin</label>
+								<input class="form-control" type="text" th:field="*{nomorIzin}" placeholder="Nomor Izin" />
+							</div>
+							<div class="form-group col-lg-4">
+								<label>Tanggal Izin</label>
+								<input class="form-control" type="text" th:field="*{tglIzin}" placeholder="dd/mm/yyyy" />
+							</div>
+
+                            <!--USER ADMIN PERUSAHAAN-->
+                            <div class="form-group col-lg-4">
+                                <label>Nama User Admin </label>
+                                <input class="form-control" th:field="*{nama}" type="text" placeholder="Nama Lengkap User admin perusahaan" />
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Email User Admin</label>
+                                <input class="form-control" type="text" th:field="*{email}" placeholder="Email user admin perusahaan" />
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Password User Admin</label>
+                                <input class="form-control" type="password" th:field="*{password}" />
+                            </div>
+
+							<div class="form-group col-lg-12 pull-right">
+								<label>&nbsp;</label>
+								<button class="btn btn-primary btn-block" type="submit">Simpan</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
